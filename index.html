@@ -30,23 +30,23 @@
             --bg-dark: #0B0E14;
             /* Deep Navy/Black */
             --bg-card: rgba(22, 27, 34, 0.7);
-            /* Glassy Card */
+            /* Modern Dashboard Variables (Dark Theme Restored) */
+            --bg-dark: #0B0E14;
+            --bg-card: rgba(22, 27, 34, 0.7);
             --bg-card-hover: rgba(30, 35, 45, 0.8);
 
             --accent-primary: #38BDF8;
-            /* Sky Blue */
             --accent-secondary: #818CF8;
-            /* Indigo */
             --accent-success: #34D399;
-            /* Emerald */
             --accent-warning: #FBBF24;
-            /* Amber */
 
             --text-main: #F1F5F9;
             --text-muted: #94A3B8;
 
             --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             --glow-primary: rgba(56, 189, 248, 0.15);
+            --code-bg: #1e293b;
         }
 
         * {
@@ -76,7 +76,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: var(--glass-shadow);
         }
 
         .glass-card {
@@ -145,12 +145,33 @@
             border: 1px solid var(--glass-border);
             color: var(--text-main);
             border-radius: 8px;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
         }
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
             border-color: var(--text-muted);
+        }
+
+        /* WhatsApp Button */
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #fff;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+            opacity: 0.95;
         }
 
         /* Animations */
@@ -178,7 +199,9 @@
     <nav class="fixed w-full top-0 z-50 glass-panel border-b-0 border-b-white/5">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#hero" class="flex items-center gap-3 group">
-                <img src="AnaCodelogo.png" alt="AnaCode Logo" class="w-8 h-8 object-contain">
+                <div class="bg-white/90 p-1.5 rounded-lg shadow-lg shadow-sky-500/20 group-hover:bg-white transition">
+                    <img src="AnaCodelogo.png" alt="AnaCode Logo" class="w-8 h-8 object-contain">
+                </div>
                 <span
                     class="font-bold text-lg tracking-tight text-slate-200 group-hover:text-white transition">AnaCode</span>
             </a>
@@ -196,7 +219,7 @@
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white">
+            <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-slate-900">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
@@ -223,7 +246,7 @@
             <!-- Left: Content -->
             <div class="space-y-8">
                 <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-mono font-medium">
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-600 text-xs font-mono font-medium">
                     <span class="relative flex h-2 w-2">
                         <span
                             class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
@@ -232,9 +255,8 @@
                     Available for New Projects
                 </div>
 
-                <h1 class="text-5xl md:text-6xl font-bold leading-tight">
-                    Strategic Web <br />
-                    <span class="text-gradient">Development</span>
+                <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6 text-white">
+                    AnaCode
                 </h1>
 
                 <p class="text-xl text-slate-200 max-w-lg leading-relaxed font-semibold mt-4 mb-2">
@@ -270,7 +292,7 @@
             </div>
 
             <!-- Right: Dashboard Visual -->
-            <div class="relative lg:h-[600px] flex items-center justify-center">
+            <div class="relative lg:h-[600px] flex items-center justify-center -mt-12 lg:-mt-20">
                 <!-- Main Dashboard Card -->
                 <div class="glass-card w-full max-w-md p-6 relative z-10 animate-float">
                     <!-- Header -->
@@ -287,10 +309,10 @@
                     <div class="space-y-4">
                         <div class="flex justify-between items-end">
                             <div>
-                                <div class="text-xs text-slate-400 mb-1">System Load</div>
-                                <div class="text-2xl font-bold text-white font-mono">42%</div>
+                                <div class="text-xs text-slate-400 mb-1">ROI Tracker</div>
+                                <div class="text-2xl font-bold text-white font-mono">+128%</div>
                             </div>
-                            <div class="text-xs text-emerald-400 font-mono">▲ Optimal</div>
+                            <div class="text-xs text-emerald-400 font-mono">▲ Trending Up</div>
                         </div>
 
                         <!-- Chart Canvas -->
@@ -355,9 +377,9 @@
                 </h2>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Service 1: Custom Build -->
-                <div class="glass-card p-8 group">
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 group hover:bg-slate-800/50 transition duration-300">
                     <div
                         class="w-12 h-12 rounded-lg bg-sky-500/10 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition duration-300">
                         💻
@@ -373,12 +395,8 @@
                     </div>
                 </div>
 
-                <!-- Service 2: Strategy/BA -->
-                <div class="glass-card p-8 group relative overflow-hidden">
-                    <div
-                        class="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-bl-full -mr-4 -mt-4 transition group-hover:bg-indigo-500/20">
-                    </div>
-
+                <!-- Service 2 -->
+                <div class="glass-card p-8 group hover:bg-slate-800/50 transition duration-300">
                     <div
                         class="w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition duration-300">
                         📊
@@ -394,8 +412,8 @@
                     </div>
                 </div>
 
-                <!-- Service 3: CMS & Maintenance -->
-                <div class="glass-card p-8 group">
+                <!-- Service 3 -->
+                <div class="glass-card p-8 group hover:bg-slate-800/50 transition duration-300">
                     <div
                         class="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition duration-300">
                         ⚙️
@@ -429,7 +447,7 @@
                 </a>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-2 gap-8">
                 <!-- Project 1: Crowngate Dental Laboratory -->
                 <div class="glass-card p-0 overflow-hidden group">
                     <!-- Header / Status Bar -->
@@ -439,7 +457,7 @@
                             <span class="w-2 h-2 rounded-full bg-amber-500"></span>
                             <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                         </div>
-                        <div class="text-xs font-mono text-slate-500">crowngate_dental.deploy</div>
+                        <div class="text-xs font-mono text-slate-500">crowngate_dental.html</div>
                     </div>
 
                     <div class="p-8">
@@ -462,13 +480,14 @@
                             acquisition.
                         </p>
 
+                        <!-- Metrics Grid -->
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div>
                                 <div class="text-3xl font-bold text-white mb-1">+40%</div>
                                 <div class="text-xs text-slate-500 uppercase tracking-wider">Inquiry Rate</div>
                             </div>
                             <!-- Impact Analysis Chart Container -->
-                            <div class="h-16 w-full relative">
+                            <div class="h-16 relative">
                                 <canvas id="portfolioChart1"></canvas>
                             </div>
                         </div>
@@ -492,7 +511,7 @@
                         Ready to transform your business requirements into a robust digital solution?
                     </p>
                     <a href="#contact" class="btn-secondary px-6 py-2 text-sm">
-                        Initialize Project
+                        Start a Project
                     </a>
                 </div>
             </div>
@@ -516,6 +535,7 @@
                             guided by strategic objectives. I don't just execute design files; I validate the business
                             case behind them.
                         </p>
+
                         <div class="grid grid-cols-2 gap-6">
                             <div>
                                 <h4 class="text-white font-bold mb-2 flex items-center gap-2">
@@ -525,6 +545,7 @@
                                     <li>• Requirements Elicitation</li>
                                     <li>• Process Mapping</li>
                                     <li>• Scope Definition</li>
+                                    <li>• ROI Modeling</li>
                                 </ul>
                             </div>
                             <div>
@@ -535,6 +556,7 @@
                                     <li>• HTML5 & Tailwind</li>
                                     <li>• JavaScript (ES6+)</li>
                                     <li>• Git & CI/CD</li>
+                                    <li>• Chart.js / D3.js</li>
                                 </ul>
                             </div>
                         </div>
@@ -544,7 +566,7 @@
                 <!-- Skills Matrix Chart -->
                 <div class="relative">
                     <div
-                        class="absolute inset-0 bg-gradient-to-r from-sky-500/20 to-indigo-500/20 blur-[80px] rounded-full">
+                        class="absolute -inset-4 bg-gradient-to-r from-sky-500/20 to-indigo-500/20 rounded-full blur-3xl">
                     </div>
                     <div class="glass-card p-8 relative z-10">
                         <div class="flex justify-between items-center mb-6">
@@ -594,7 +616,7 @@
                     </div>
 
                     <button type="submit" class="w-full btn-primary py-4 text-lg shadow-lg shadow-sky-500/20">
-                        Send Request <i class="fas fa-paper-plane ml-2"></i>
+                        Send Message <i class="fas fa-paper-plane ml-2"></i>
                     </button>
                 </form>
 
@@ -603,9 +625,8 @@
                         class="flex items-center gap-2 text-slate-400 hover:text-sky-400 transition">
                         <i class="fas fa-envelope"></i> sreehari200011@gmail.com
                     </a>
-                    <a href="https://wa.me/918137937207" target="_blank"
-                        class="flex items-center gap-2 text-slate-400 hover:text-emerald-400 transition">
-                        <i class="fab fa-whatsapp"></i> +91 81379 37207
+                    <a href="https://wa.me/918137937207" target="_blank" class="btn-whatsapp">
+                        <i class="fab fa-whatsapp text-lg"></i> Chat on WhatsApp
                     </a>
                 </div>
             </div>
@@ -644,7 +665,7 @@
             data: {
                 labels: Array.from({ length: 20 }, (_, i) => i),
                 datasets: [{
-                    label: 'System Load',
+                    label: 'ROI Growth',
                     data: Array.from({ length: 20 }, () => Math.floor(Math.random() * 40) + 30),
                     borderColor: '#00BCD4', // accent-green
                     backgroundColor: 'rgba(0, 188, 212, 0.1)',
@@ -680,22 +701,13 @@
             type: 'bar',
             data: {
                 labels: ['Inquiries', 'Lead Quality', 'Conv. Rate'],
-                datasets: [
-                    {
-                        label: 'Before',
-                        data: [30, 45, 20],
-                        backgroundColor: 'rgba(139, 148, 158, 0.2)', // muted
-                        borderColor: 'rgba(139, 148, 158, 0.5)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'After',
-                        data: [85, 90, 75],
-                        backgroundColor: 'rgba(0, 188, 212, 0.6)', // accent-green
-                        borderColor: '#00BCD4',
-                        borderWidth: 1
-                    }
-                ]
+                datasets: [{
+                    label: 'Performance',
+                    data: [85, 90, 75],
+                    backgroundColor: 'rgba(14, 165, 233, 0.6)',
+                    borderColor: '#0ea5e9',
+                    borderWidth: 1
+                }]
             },
             options: {
                 responsive: true,
@@ -717,14 +729,14 @@
             data: {
                 labels: ['Business Analysis', 'Frontend Dev', 'Data Strategy', 'UI/UX Design', 'System Arch'],
                 datasets: [{
-                    label: 'Proficiency Level',
+                    label: 'Proficiency',
                     data: [95, 85, 90, 75, 80],
-                    backgroundColor: 'rgba(157, 78, 221, 0.2)', // accent-purple
-                    borderColor: '#9D4EDD',
-                    pointBackgroundColor: '#9D4EDD',
+                    backgroundColor: 'rgba(14, 165, 233, 0.2)', // accent-primary
+                    borderColor: '#0ea5e9',
+                    pointBackgroundColor: '#0ea5e9',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#9D4EDD'
+                    pointHoverBorderColor: '#0ea5e9'
                 }]
             },
             options: {
