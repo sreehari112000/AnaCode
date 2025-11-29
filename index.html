@@ -50,6 +50,34 @@
             --code-bg: #1e293b;
         }
 
+        /* Light Mode Overrides */
+        [data-theme="light"] {
+            --bg-dark: #F8FAFC;
+            /* Slate 50 */
+            --bg-card: rgba(255, 255, 255, 0.8);
+            --bg-card-hover: rgba(255, 255, 255, 0.95);
+            --text-main: #0F172A;
+            /* Slate 900 */
+            --text-muted: #64748B;
+            /* Slate 500 */
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --glow-primary: rgba(56, 189, 248, 0.1);
+            --code-bg: #F1F5F9;
+        }
+
+        /* Light Mode Text Overrides */
+        [data-theme="light"] .text-white,
+        [data-theme="light"] .text-slate-200,
+        [data-theme="light"] .text-slate-300 {
+            color: var(--text-main) !important;
+        }
+
+        [data-theme="light"] .text-slate-400,
+        [data-theme="light"] .text-slate-500 {
+            color: var(--text-muted) !important;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -213,7 +241,11 @@
                 <a href="#about" class="nav-link">About</a>
             </div>
 
-            <div class="hidden md:block">
+            <div class="hidden md:flex items-center gap-4">
+                <button id="theme-toggle"
+                    class="p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-sky-400 transition border border-white/5">
+                    <i class="fas fa-sun"></i>
+                </button>
                 <a href="#contact" class="btn-primary px-5 py-2 text-sm shadow-lg shadow-sky-500/20">
                     Start Project
                 </a>
@@ -232,6 +264,13 @@
             <a href="#services" class="block text-slate-300 hover:text-sky-400">Services</a>
             <a href="#work" class="block text-slate-300 hover:text-sky-400">Portfolio</a>
             <a href="#about" class="block text-slate-300 hover:text-sky-400">About</a>
+            <div class="flex items-center justify-between border-t border-white/5 pt-4 mt-2">
+                <span class="text-slate-400 text-sm">Theme</span>
+                <button id="mobile-theme-toggle"
+                    class="p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-sky-400 transition border border-white/5">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
             <a href="#contact" class="block text-center btn-primary px-4 py-2">Start Project</a>
         </div>
     </nav>
@@ -820,6 +859,49 @@
                 }
             });
         });
+
+
+        // --- Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+        const htmlElement = document.documentElement;
+        const iconSun = '<i class="fas fa-sun"></i>';
+        const iconMoon = '<i class="fas fa-moon"></i>';
+
+        // Check for saved user preference, if any, on load of the website
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+            updateIcons(true);
+        } else {
+            htmlElement.removeAttribute('data-theme'); // Default to dark
+            updateIcons(false);
+        }
+
+        function updateIcons(isLight) {
+            const icon = isLight ? iconMoon : iconSun;
+            if (themeToggleBtn) themeToggleBtn.innerHTML = icon;
+            if (mobileThemeToggleBtn) mobileThemeToggleBtn.innerHTML = icon;
+        }
+
+        function toggleTheme() {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            if (currentTheme === 'light') {
+                htmlElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+                updateIcons(false);
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                updateIcons(true);
+            }
+        }
+
+        if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+
     </script>
 </body>
 
